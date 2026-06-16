@@ -1,20 +1,54 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import emailjs from "@emailjs/browser";
 import type { Dictionary } from "@/lib/translations";
 
 type ContactSectionProps = {
   dictionary: Dictionary["contact"];
 };
 
-export function ContactSection({ dictionary }: ContactSectionProps) {
-  const [message, setMessage] = useState("");
+type Status = "idle" | "sending" | "sent" | "error";
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+const SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+const TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+export function ContactSection({ dictionary }: ContactSectionProps) {
+  const [status, setStatus] = useState<Status>("idle");
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setMessage(dictionary.sent);
-    event.currentTarget.reset();
+    const form = event.currentTarget;
+
+    if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
+      console.error("EmailJS environment variables are not configured.");
+      setStatus("error");
+      return;
+    }
+
+    setStatus("sending");
+
+    try {
+      await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form, {
+        publicKey: PUBLIC_KEY,
+      });
+      setStatus("sent");
+      form.reset();
+    } catch (error) {
+      console.error("EmailJS send failed:", error);
+      setStatus("error");
+    }
   }
+
+  const statusMessage =
+    status === "sending"
+      ? dictionary.sending
+      : status === "sent"
+        ? dictionary.sent
+        : status === "error"
+          ? dictionary.error
+          : "";
 
   return (
     <section id="contact" className="bg-white px-6 py-24 sm:px-10 lg:px-16">
@@ -79,14 +113,20 @@ export function ContactSection({ dictionary }: ContactSectionProps) {
 
             <button
               type="submit"
-              className="rounded-full border border-gold bg-black px-6 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white transition-colors hover:bg-gold hover:text-black"
+              disabled={status === "sending"}
+              className="rounded-full border border-gold bg-black px-6 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white transition-colors hover:bg-gold hover:text-black disabled:cursor-not-allowed disabled:opacity-60"
             >
-              {dictionary.submit}
+              {status === "sending" ? dictionary.sending : dictionary.submit}
             </button>
 
-            {message ? (
-              <p className="text-sm font-semibold text-black" role="status">
-                {message}
+            {statusMessage ? (
+              <p
+                className={`text-sm font-semibold ${
+                  status === "error" ? "text-red-600" : "text-black"
+                }`}
+                role="status"
+              >
+                {statusMessage}
               </p>
             ) : null}
           </div>

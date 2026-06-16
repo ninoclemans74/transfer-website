@@ -74,6 +74,8 @@ export const translations = {
       eyebrow: "Kontakt",
       title: "Planen Sie Ihre nächste private Fahrt.",
       sent: "Nachricht erfolgreich gesendet.",
+      sending: "Wird gesendet…",
+      error: "Senden fehlgeschlagen. Bitte versuchen Sie es erneut.",
       submit: "Nachricht senden",
       fields: {
         name: "Name",
@@ -163,6 +165,8 @@ export const translations = {
       eyebrow: "Contact Us",
       title: "Arrange your next private ride.",
       sent: "Message sent successfully.",
+      sending: "Sending…",
+      error: "Sending failed. Please try again.",
       submit: "Send Message",
       fields: {
         name: "Name",
@@ -252,6 +256,8 @@ export const translations = {
       eyebrow: "Контакты",
       title: "Запланируйте вашу следующую частную поездку.",
       sent: "Сообщение успешно отправлено.",
+      sending: "Отправка…",
+      error: "Не удалось отправить. Попробуйте ещё раз.",
       submit: "Отправить",
       fields: {
         name: "Имя",
