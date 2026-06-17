@@ -21,7 +21,7 @@ export function HomePage({ locale, dictionary }: HomePageProps) {
         <CarsSection dictionary={dictionary.cars} />
         <ContactSection dictionary={dictionary.contact} />
       </main>
-      <Footer dictionary={dictionary.footer} />
+      <Footer dictionary={dictionary.footer} contact={dictionary.contact} />
     </>
   );
 }

@@ -11,7 +11,7 @@ export const translations = {
     nav: {
       home: "Startseite",
       about: "Über uns",
-      cars: "Fahrzeuge",
+      cars: "Auto",
       contact: "Kontakt",
       menuLabel: "Menü",
       menuToggle: "Navigation öffnen",
@@ -56,7 +56,7 @@ export const translations = {
       ],
     },
     cars: {
-      eyebrow: "Fahrzeuge",
+      eyebrow: "Auto",
       title: "Eine gepflegte Flotte für private Fahrten.",
       previous: "Vorheriges Fahrzeug anzeigen",
       next: "Nächstes Fahrzeug anzeigen",
@@ -102,7 +102,7 @@ export const translations = {
     nav: {
       home: "Home",
       about: "About",
-      cars: "Cars",
+      cars: "Car",
       contact: "Contact",
       menuLabel: "Menu",
       menuToggle: "Open navigation",
@@ -147,7 +147,7 @@ export const translations = {
       ],
     },
     cars: {
-      eyebrow: "Cars",
+      eyebrow: "Car",
       title: "A clean fleet for private travel.",
       previous: "Show previous car",
       next: "Show next car",
@@ -193,7 +193,7 @@ export const translations = {
     nav: {
       home: "Главная",
       about: "О нас",
-      cars: "Авто",
+      cars: "Автомобиль",
       contact: "Контакты",
       menuLabel: "Меню",
       menuToggle: "Открыть навигацию",
@@ -238,7 +238,7 @@ export const translations = {
       ],
     },
     cars: {
-      eyebrow: "Авто",
+      eyebrow: "Автомобиль",
       title: "Ухоженный автопарк для частных поездок.",
       previous: "Показать предыдущий автомобиль",
       next: "Показать следующий автомобиль",
