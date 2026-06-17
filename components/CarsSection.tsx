@@ -11,9 +11,60 @@ type CarsSectionProps = {
 export function CarsSection({ dictionary }: CarsSectionProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [direction, setDirection] = useState<"next" | "previous" | null>(null);
+  const [loadedImages, setLoadedImages] = useState<Set<string>>(() => new Set());
   const cars = dictionary.items;
   const previousIndex = activeIndex === 0 ? cars.length - 1 : activeIndex - 1;
   const nextIndex = activeIndex === cars.length - 1 ? 0 : activeIndex + 1;
+
+  function markImageLoaded(src: string) {
+    setLoadedImages((current) => {
+      if (current.has(src)) {
+        return current;
+      }
+
+      const nextLoadedImages = new Set(current);
+      nextLoadedImages.add(src);
+      return nextLoadedImages;
+    });
+  }
+
+  function renderCarImage({
+    src,
+    alt,
+    sizes,
+    priority = false,
+  }: {
+    src: string;
+    alt: string;
+    sizes: string;
+    priority?: boolean;
+  }) {
+    const isLoaded = loadedImages.has(src);
+
+    return (
+      <>
+        {!isLoaded ? (
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 z-10 flex items-center justify-center bg-neutral-100"
+          >
+            <div className="h-9 w-9 animate-spin rounded-full border-2 border-neutral-300 border-t-gold" />
+          </div>
+        ) : null}
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          sizes={sizes}
+          className={`object-cover transition-opacity duration-300 ${
+            isLoaded ? "opacity-100" : "opacity-0"
+          }`}
+          priority={priority}
+          onLoad={() => markImageLoaded(src)}
+        />
+      </>
+    );
+  }
 
   function showPreviousCar() {
     if (direction) {
@@ -94,14 +145,12 @@ export function CarsSection({ dictionary }: CarsSectionProps) {
                               : "w-[76%] opacity-55"
                       } ${animatedPosition}`}
                     >
-                      <Image
-                        src={car.image}
-                        alt={car.name}
-                        fill
-                        sizes="76vw"
-                        className="object-cover"
-                        priority={carIndex === 0}
-                      />
+                      {renderCarImage({
+                        src: car.image,
+                        alt: car.name,
+                        sizes: "76vw",
+                        priority: carIndex === 0,
+                      })}
                     </div>
                   );
                 })}
@@ -116,8 +165,8 @@ export function CarsSection({ dictionary }: CarsSectionProps) {
                         : "-left-[58%] opacity-55"
                       }`}
                     >
-                      <Image
-                        src={
+                      {renderCarImage({
+                        src:
                           direction === "next"
                             ? cars[
                                 nextIndex === cars.length - 1 ? 0 : nextIndex + 1
@@ -126,13 +175,10 @@ export function CarsSection({ dictionary }: CarsSectionProps) {
                                 previousIndex === 0
                                   ? cars.length - 1
                                   : previousIndex - 1
-                              ].image
-                        }
-                        alt={dictionary.adjacent}
-                        fill
-                        sizes="76vw"
-                        className="object-cover"
-                      />
+                              ].image,
+                        alt: dictionary.adjacent,
+                        sizes: "76vw",
+                      })}
                     </div>
                 )}
               </div>
@@ -182,13 +228,11 @@ export function CarsSection({ dictionary }: CarsSectionProps) {
             {cars.map((car, index) => (
               <div key={`${car.name}-${index}`} className="group">
                 <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-black transition-transform duration-300 group-hover:-translate-y-1">
-                  <Image
-                    src={car.image}
-                    alt={car.name}
-                    fill
-                    sizes="(min-width: 1024px) 30vw, 45vw"
-                    className="object-cover"
-                  />
+                  {renderCarImage({
+                    src: car.image,
+                    alt: car.name,
+                    sizes: "(min-width: 1024px) 30vw, 45vw",
+                  })}
                 </div>
               </div>
             ))}
