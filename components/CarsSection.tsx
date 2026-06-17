@@ -91,7 +91,7 @@ export function CarsSection({ dictionary }: CarsSectionProps) {
   }
 
   return (
-    <section id="cars" className="bg-white px-6 py-20 sm:px-10 lg:px-16">
+    <section id="cars" className="bg-white px-4 py-20 sm:px-10 lg:px-16">
       <div className="mx-auto max-w-5xl">
         <div className="mx-auto mb-10 max-w-2xl text-center">
           <div className="mx-auto mb-6 h-px w-16 bg-gold" />
@@ -111,23 +111,23 @@ export function CarsSection({ dictionary }: CarsSectionProps) {
                   const car = cars[carIndex];
                   const basePosition =
                     position === 0
-                      ? "-left-[58%]"
+                      ? "-left-[76%]"
                       : position === 1
-                        ? "left-[12%]"
+                        ? "left-[7%]"
                         : "left-[82%]";
                   const animatedPosition =
                     direction === "next"
                       ? position === 0
-                        ? "-left-[128%]"
+                        ? "-left-[158%]"
                         : position === 1
-                          ? "-left-[58%]"
-                          : "left-[12%]"
+                          ? "-left-[76%]"
+                          : "left-[7%]"
                       : direction === "previous"
                         ? position === 0
-                          ? "left-[12%]"
+                          ? "left-[7%]"
                           : position === 1
                             ? "left-[82%]"
-                            : "left-[152%]"
+                            : "left-[157%]"
                         : basePosition;
 
                   return (
@@ -136,19 +136,19 @@ export function CarsSection({ dictionary }: CarsSectionProps) {
                       className={`absolute top-0 aspect-[4/3] overflow-hidden rounded-xl bg-black transition-all duration-500 ease-out ${
                         position === 1
                           ? direction
-                            ? "z-10 w-[76%] opacity-55"
-                            : "z-10 w-[76%] opacity-100"
+                            ? "z-10 w-[86%] opacity-55"
+                            : "z-10 w-[86%] opacity-100"
                           : direction === "next" && position === 2
-                            ? "z-10 w-[76%] opacity-100"
+                            ? "z-10 w-[86%] opacity-100"
                             : direction === "previous" && position === 0
-                              ? "z-10 w-[76%] opacity-100"
-                              : "w-[76%] opacity-55"
+                              ? "z-10 w-[86%] opacity-100"
+                              : "w-[86%] opacity-55"
                       } ${animatedPosition}`}
                     >
                       {renderCarImage({
                         src: car.image,
                         alt: car.name,
-                        sizes: "76vw",
+                        sizes: "86vw",
                         priority: carIndex === 0,
                       })}
                     </div>
@@ -159,10 +159,10 @@ export function CarsSection({ dictionary }: CarsSectionProps) {
               <div className="pointer-events-none absolute inset-0">
                 {direction === null ? null : (
                   <div
-                    className={`absolute top-0 aspect-[4/3] w-[76%] overflow-hidden rounded-xl bg-black transition-all duration-500 ease-out ${
+                    className={`absolute top-0 aspect-[4/3] w-[86%] overflow-hidden rounded-xl bg-black transition-all duration-500 ease-out ${
                       direction === "next"
                         ? "left-[82%] opacity-55"
-                        : "-left-[58%] opacity-55"
+                        : "-left-[76%] opacity-55"
                       }`}
                     >
                       {renderCarImage({
@@ -177,7 +177,7 @@ export function CarsSection({ dictionary }: CarsSectionProps) {
                                   : previousIndex - 1
                               ].image,
                         alt: dictionary.adjacent,
-                        sizes: "76vw",
+                        sizes: "86vw",
                       })}
                     </div>
                 )}

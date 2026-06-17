@@ -34,7 +34,7 @@ export function HeroSection({ dictionary }: HeroSectionProps) {
         <p className="mb-5 max-w-xl text-sm font-semibold uppercase tracking-[0.28em] text-white/80">
           {dictionary.eyebrow}
         </p>
-        <h1 className="max-w-4xl text-5xl font-semibold leading-none tracking-normal sm:text-6xl lg:text-7xl">
+        <h1 className="max-w-4xl text-[2.65rem] font-semibold leading-none tracking-normal min-[380px]:text-5xl sm:text-6xl lg:text-7xl">
           {dictionary.title}
         </h1>
         {/* <p className="mt-7 max-w-2xl text-base leading-8 text-white/80 sm:text-lg">
@@ -45,7 +45,7 @@ export function HeroSection({ dictionary }: HeroSectionProps) {
 
       <a
         href="#contact"
-        className="absolute bottom-8 left-1/2 z-20 flex min-h-14 min-w-44 -translate-x-1/2 items-center justify-center rounded-full border border-gold bg-black/35 px-9 py-4 text-center text-sm font-semibold uppercase tracking-[0.18em] text-white backdrop-blur-xl"
+        className="absolute bottom-8 left-1/2 z-20 flex min-h-14 w-[min(86vw,260px)] -translate-x-1/2 items-center justify-center whitespace-nowrap rounded-full border border-gold bg-black/35 px-6 py-4 text-center text-sm font-semibold uppercase tracking-[0.12em] text-white backdrop-blur-xl sm:w-auto sm:min-w-44 sm:px-9 sm:tracking-[0.18em]"
       >
         {dictionary.cta}
       </a>
