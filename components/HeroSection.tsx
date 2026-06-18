@@ -9,7 +9,7 @@ export function HeroSection({ dictionary }: HeroSectionProps) {
   return (
     <section
       id="home"
-      className="relative flex min-h-[100svh] scroll-mt-28 items-end overflow-hidden bg-black px-6 pb-16 pt-32 text-white sm:px-10 lg:px-16"
+      className="relative flex min-h-[100svh] scroll-mt-28 items-start overflow-hidden bg-black px-6 pb-28 pt-32 text-white sm:items-end sm:px-10 sm:pb-16 lg:px-16"
     >
       <Image
         src="/images/hero.webp"
@@ -29,7 +29,7 @@ export function HeroSection({ dictionary }: HeroSectionProps) {
       />
       <div className="absolute inset-0 bg-black/35" />
 
-      <div className="relative z-10 mx-auto mb-20 w-full max-w-6xl sm:mb-24 lg:mb-28 lg:-translate-x-16">
+      <div className="relative z-10 mx-auto w-full max-w-6xl sm:mb-[calc(100svh-28rem)] lg:mb-[calc(100svh-31rem)] lg:-translate-x-16">
         <div className="mb-8 h-px w-20 bg-gold" />
         <p className="mb-5 max-w-xl text-sm font-semibold uppercase tracking-[0.28em] text-white/80">
           {dictionary.eyebrow}
