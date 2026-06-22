@@ -89,7 +89,7 @@ export const translations = {
       items: [
         { label: "Standort", value: "Bochum, Deutschland" },
         { label: "Telefonnummer", value: "+49 234 45979838" },
-        { label: "E-Mail", value: "Ninoclemens74@yahoo.de" },
+        { label: "E-Mail", value: "info@nc-flughafentransveher.com" },
       ],
     },
     footer: {
