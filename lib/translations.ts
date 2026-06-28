@@ -180,7 +180,7 @@ export const translations = {
       items: [
         { label: "Location", value: "Bochum, Germany" },
         { label: "Phone number", value: "+49 234 45979838" },
-        { label: "Email", value: "Ninoclemens74@yahoo.de" },
+        { label: "Email", value: "Info@nc-flughafentransfehr.com" },
       ],
     },
     footer: {
@@ -271,7 +271,7 @@ export const translations = {
       items: [
         { label: "Локация", value: "Бохум, Германия" },
         { label: "Телефон", value: "+49 234 45979838" },
-        { label: "E-mail", value: "Ninoclemens74@yahoo.de" },
+        { label: "E-mail", value: "Info@nc-flughafentransfehr.com" },
       ],
     },
     footer: {
